@@ -20,7 +20,7 @@ The AI leverages `stable-baselines3` for RL algorithms (like PPO) and the `imita
 - `tkinter` (built-in on many systems, else install via system package manager)
 
 Install requirements:
-```bash pip install -r requirements.txt```
+<pre> pip install -r requirements.txt </pre>
 
 If tkinter is missing on Linux:
 <pre> ```bash sudo apt-get install python3-tk``` </pre>
