@@ -45,7 +45,7 @@ This opens a 9x9 Go board GUI. The default AI model attempts to load go_ai_model
 * Use "Restart" to start a new game.
 
 ## Training the AI
-1. PPO Training from Scratch
+1. ### PPO Training from Scratch
 
 Use train.py to train a PPO model without demonstrations:
 
@@ -53,10 +53,10 @@ Use train.py to train a PPO model without demonstrations:
 python train.py </pre>
 This will interact with the environment (self-play) and train go_ai_model.zip.
 
-2. Collecting Demonstrations
+2. ### Collecting Demonstrations
 Play a game via the GUI (python main.py) and end the game. This saves (state, action) pairs as demos.npz in ml/data. These demonstrations can then be used for imitation learning.
 
-3. Imitation Learning with imitation_train.py
+3. ### Imitation Learning with imitation_train.py
 After collecting demonstrations:
 
 <pre> cd ml
@@ -64,7 +64,7 @@ python imitation_train.py</pre>
 
 This will load data/demos.npz, perform Behavior Cloning (BC), and save go_bc_policy
 
-4. Fine-Tuning with PPO (ppo_finetune.py)
+4. ### Fine-Tuning with PPO (ppo_finetune.py)
 Now that you have a BC-trained policy, you can further improve it with PPO:
 
 <pre> cd ml
