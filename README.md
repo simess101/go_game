@@ -23,17 +23,17 @@ Install requirements:
 <pre> pip install -r requirements.txt </pre>
 
 If tkinter is missing on Linux:
-<pre> ```bash sudo apt-get install python3-tk``` </pre>
+<pre> sudo apt-get install python3-tk </pre>
 On Windows, tkinter should be included with standard Python installations.
 
 ## Running the Project
 1. Ensure Directory Structure:
 You should be in the go_game directory where main.py is located.
 
-<pre>```bash cd C:\Users\Shane\Desktop\go_game```</pre>
+<pre> cd C:\Users\Shane\Desktop\go_game </pre>
 
 2. Launch the GUI:
-<pre>```bash python main.py```</pre>
+<pre> python main.py </pre>
 
 This opens a 9x9 Go board GUI. The default AI model attempts to load go_ai_model.zip or go_bc_policy.zip from the ml folder. If you have not trained a model yet, the AI will not have a policy loaded and will effectively play random or pass.
 
@@ -49,8 +49,8 @@ This opens a 9x9 Go board GUI. The default AI model attempts to load go_ai_model
 
 Use train.py to train a PPO model without demonstrations:
 
-<pre>```bash cd ml
-python train.py```</pre>
+<pre> cd ml
+python train.py </pre>
 This will interact with the environment (self-play) and train go_ai_model.zip.
 
 2. Collecting Demonstrations
@@ -59,16 +59,16 @@ Play a game via the GUI (python main.py) and end the game. This saves (state, ac
 3. Imitation Learning with imitation_train.py
 After collecting demonstrations:
 
-<pre>```bash cd ml
-python imitation_train.py```</pre>
+<pre> cd ml
+python imitation_train.py</pre>
 
 This will load data/demos.npz, perform Behavior Cloning (BC), and save go_bc_policy
 
 4. Fine-Tuning with PPO (ppo_finetune.py)
 Now that you have a BC-trained policy, you can further improve it with PPO:
 
-<pre>```bash cd ml
-python ppo_finetune.py```</pre>
+<pre> cd ml
+python ppo_finetune.py </pre>
 
 This loads go_bc_policy into a PPO model, improves it, and saves go_ai_model.zip.
 
