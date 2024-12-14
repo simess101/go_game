@@ -27,25 +27,24 @@ If tkinter is missing on Linux:
 On Windows, tkinter should be included with standard Python installations.
 
 ## Running the Project
-1. Ensure Directory Structure:
+### 1. Ensure Directory Structure:
 You should be in the go_game directory where main.py is located.
 
 <pre> cd C:\Users\Shane\Desktop\go_game </pre>
 
-2. Launch the GUI:
+### 2. Launch the GUI:
 <pre> python main.py </pre>
 
 This opens a 9x9 Go board GUI. The default AI model attempts to load go_ai_model.zip or go_bc_policy.zip from the ml folder. If you have not trained a model yet, the AI will not have a policy loaded and will effectively play random or pass.
 
-3. Playing the Game:
-
+### 3. Playing the Game:
 * Left-click on the board intersections to place stones.
 * Use the "Pass" button if you have no move.
 * Use the "End Game" button to calculate the score and save the recorded game as demonstrations (demos.npz in ml/data).
 * Use "Restart" to start a new game.
 
 ## Training the AI
-1. ### PPO Training from Scratch
+### 1. PPO Training from Scratch
 
 Use train.py to train a PPO model without demonstrations:
 
@@ -53,10 +52,10 @@ Use train.py to train a PPO model without demonstrations:
 python train.py </pre>
 This will interact with the environment (self-play) and train go_ai_model.zip.
 
-2. ### Collecting Demonstrations
+### 2. Collecting Demonstrations
 Play a game via the GUI (python main.py) and end the game. This saves (state, action) pairs as demos.npz in ml/data. These demonstrations can then be used for imitation learning.
 
-3. ### Imitation Learning with imitation_train.py
+### 3. Imitation Learning with imitation_train.py
 After collecting demonstrations:
 
 <pre> cd ml
@@ -64,7 +63,7 @@ python imitation_train.py</pre>
 
 This will load data/demos.npz, perform Behavior Cloning (BC), and save go_bc_policy
 
-4. ### Fine-Tuning with PPO (ppo_finetune.py)
+### 4. Fine-Tuning with PPO (ppo_finetune.py)
 Now that you have a BC-trained policy, you can further improve it with PPO:
 
 <pre> cd ml
@@ -74,7 +73,6 @@ This loads go_bc_policy into a PPO model, improves it, and saves go_ai_model.zip
 
 ## Using the Trained Model in the GUI
 Once you have go_ai_model.zip (or go_bc_policy.zip):
-
 * Ensure it is located in ml directory.
 * Run python main.py from the go_game directory.
 * The GUI will load the model, and the AI will play according to the trained policy.
